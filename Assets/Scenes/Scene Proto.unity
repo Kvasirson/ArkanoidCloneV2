@@ -3511,6 +3511,11 @@ PrefabInstance:
       propertyPath: BlockHealth
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4412602913363990398, guid: 6238f7fbed2b1844391b3264cba61523,
+        type: 3}
+      propertyPath: Indestructible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8157913960213449386, guid: 6238f7fbed2b1844391b3264cba61523,
         type: 3}
       propertyPath: m_Sprite
