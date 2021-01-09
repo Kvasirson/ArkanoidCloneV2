@@ -40,21 +40,4 @@ public class GameManager : MonoBehaviour
         Debug.Log(score);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GamePaused)
-            {
-                Time.timeScale = 1;
-                GamePaused = false;
-            }
-
-            else
-            {
-                Time.timeScale = 0;
-                GamePaused = true;
-            }
-        }
-    }
 }
