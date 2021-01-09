@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int BallCount;
 
     int score;
+
+    bool GamePaused;
     #endregion
 
     void Start()
@@ -36,5 +38,23 @@ public class GameManager : MonoBehaviour
     {
         score = score + 100;
         Debug.Log(score);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GamePaused)
+            {
+                Time.timeScale = 1;
+                GamePaused = false;
+            }
+
+            else
+            {
+                Time.timeScale = 0;
+                GamePaused = true;
+            }
+        }
     }
 }
