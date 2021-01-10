@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         //Set score
         score = score + 100 * (scoreMultiplier + BlocksHit);
         Debug.Log("Score:" + score);
-
+        ScoreScript.scoreValue = score;
         //Set multiplier
         BlocksHit = BlocksHit + 1;
         scoreMultiplier = scoreMultiplier + 0.1f;
