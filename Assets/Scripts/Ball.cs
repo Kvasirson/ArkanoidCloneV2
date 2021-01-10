@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
 
             if (racket != null)
             {
-                this.gameObject.transform.position = new Vector3(racket.transform.position.x, -85, 0);
+                this.gameObject.transform.position = new Vector3(racket.transform.position.x, racket.transform.position.y + 6, 0);
             }
         }
 
