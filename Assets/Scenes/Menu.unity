@@ -308,7 +308,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 86ec1bc549f8bfb4c850cd99f3c77067, type: 3}
+    m_Font: {fileID: 12800000, guid: 933e60d144dac20488e65e595bf4a5a0, type: 3}
     m_FontSize: 85
     m_FontStyle: 1
     m_BestFit: 0
@@ -587,7 +587,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 950, y: 175}
+  m_SizeDelta: {x: 1500, y: 175}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1481843356
 MonoBehaviour:
@@ -609,7 +609,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 86ec1bc549f8bfb4c850cd99f3c77067, type: 3}
+    m_Font: {fileID: 12800000, guid: 933e60d144dac20488e65e595bf4a5a0, type: 3}
     m_FontSize: 180
     m_FontStyle: 1
     m_BestFit: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ARKANOID
+  m_Text: Travel Bricks
 --- !u!222 &1481843357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 86ec1bc549f8bfb4c850cd99f3c77067, type: 3}
+    m_Font: {fileID: 12800000, guid: 933e60d144dac20488e65e595bf4a5a0, type: 3}
     m_FontSize: 85
     m_FontStyle: 1
     m_BestFit: 0

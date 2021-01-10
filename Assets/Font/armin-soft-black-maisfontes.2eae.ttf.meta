@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86ec1bc549f8bfb4c850cd99f3c77067
+guid: 327fdb68a78ac1b4f8858cdfb628e69e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Arkanoid
+  fontName: ArminSoft-Black
   fontNames:
-  - Arkanoid
+  - ArminSoft-Black
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
