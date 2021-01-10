@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     //Event
     public delegate void BallFell();
     public static event BallFell OnBallHasFallen;
+    public static event BallFell BallTouchedRacket;
 
     ParticleSystem BallParticules;
 
@@ -60,6 +61,9 @@ public class Ball : MonoBehaviour
         // Hit the Racket?
         if (col.gameObject.name == "racket")
         {
+            //Multiplier reset
+            BallTouchedRacket?.Invoke();
+
             // Calculate hit Factor
             float x = hitFactor(transform.position,
                               col.transform.position,

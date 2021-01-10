@@ -14,7 +14,10 @@ public class GameManager : MonoBehaviour
     //Counts
     [SerializeField] int BallCount;
 
-    int score;
+     //score
+    float score;
+    float scoreMultiplier;
+    int BlocksHit = 1;
 
     int BlockCount = 0;
 
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Ball.OnBallHasFallen += BallHasFallen;
+        Ball.BallTouchedRacket += BlocksHitReset;
         Block.UpTHeScore += AddToScore;
         Block.BlockCount += CountBlocks;
     }
@@ -36,12 +40,17 @@ public class GameManager : MonoBehaviour
 
     private void BallHasFallen()
     {
+        //loose life
         BallCount = BallCount - 1;
         Debug.Log(BallCount);
+
+        //resset multiplier (1 life hits)
+        scoreMultiplier = 1;
         
+        //loose check and respawn
         if (BallCount > 0)
         {
-            GameObject.Instantiate(BallPrefab, new Vector3(racket.transform.position.x, -85, 0), new Quaternion(0, 0, 0, 0));
+            GameObject.Instantiate(BallPrefab, new Vector3(racket.transform.position.x, -racket.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
         }
 
         else
@@ -52,8 +61,13 @@ public class GameManager : MonoBehaviour
 
     private void AddToScore()
     {
-        score = score + 100;
+        //Set score
+        score = score + 100 * (scoreMultiplier + BlocksHit);
         Debug.Log(score);
+
+        //Set multiplier
+        BlocksHit = BlocksHit + 1;
+        scoreMultiplier = scoreMultiplier + 0.1f;
 
         //Win condition
         BlockCount = BlockCount - 1;
@@ -61,6 +75,12 @@ public class GameManager : MonoBehaviour
         {
             PlayerHasWon();
         }
+    }
+
+    //Reset multiplier (1 throw hits)
+    private void BlocksHitReset()
+    {
+        BlocksHit = 1;
     }
 
     private void CountBlocks()
