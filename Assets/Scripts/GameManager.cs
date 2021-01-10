@@ -45,8 +45,9 @@ public class GameManager : MonoBehaviour
         Debug.Log(BallCount);
 
         //resset multiplier (1 life hits)
-        scoreMultiplier = 1;
-        
+        scoreMultiplier = 0;
+        BlocksHitReset();
+
         //loose check and respawn
         if (BallCount > 0)
         {
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         //Set score
         score = score + 100 * (scoreMultiplier + BlocksHit);
-        Debug.Log(score);
+        Debug.Log("Score:" + score);
 
         //Set multiplier
         BlocksHit = BlocksHit + 1;
