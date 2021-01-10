@@ -6,11 +6,13 @@ public class Ball : MonoBehaviour
 {
     #region Variables
     // Movement speed
-    public float speed = 100f;
+    [SerializeField] float speed = 100f;
 
     //Event
     public delegate void BallFell();
     public static event BallFell OnBallHasFallen;
+
+    ParticleSystem BallParticules;
 
     bool PlayerIsReady;
     GameObject racket;
@@ -21,6 +23,7 @@ public class Ball : MonoBehaviour
     {
         PlayerIsReady = false;
         racket = GameObject.Find("racket");
+        BallParticules = this.gameObject.GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
@@ -32,6 +35,7 @@ public class Ball : MonoBehaviour
                 PlayerIsReady = true;
                 GetComponent<Rigidbody2D>().IsAwake();
                 GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+                BallParticules.Play();
             }
 
             if (racket != null)
@@ -66,6 +70,12 @@ public class Ball : MonoBehaviour
 
             // Set Velocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * speed;
+        }
+
+        //Audio
+        if (col.gameObject.CompareTag("Block"))
+        {
+
         }
     }
     #endregion

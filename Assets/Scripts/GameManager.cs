@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     int score;
 
-    bool gameIsPaused = false;
+    bool GamePaused;
     #endregion
 
     void Start()
@@ -38,25 +38,5 @@ public class GameManager : MonoBehaviour
     {
         score = score + 100;
         Debug.Log(score);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (gameIsPaused)
-            {
-                Debug.Log("unpaused");
-                Time.timeScale = 1;
-                gameIsPaused = false;
-            }
-
-            else
-            {
-                Debug.Log("paused");
-                Time.timeScale = 0;
-                gameIsPaused = true;
-            }
-        }
     }
 }
