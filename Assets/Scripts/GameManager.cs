@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,9 +21,6 @@ public class GameManager : MonoBehaviour
     int BlocksHit = 1;
 
     int BlockCount = 0;
-
-    //Pause
-    bool GamePaused;
     #endregion
 
     void Awake()
@@ -93,6 +91,7 @@ public class GameManager : MonoBehaviour
     private void PlayerHasWon()
     {
         Debug.Log("win");
+
     }
 
     //Loose
