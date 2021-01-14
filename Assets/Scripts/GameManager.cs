@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     //Counts
     [SerializeField] int BallCount;
+    int currentBallCount;
 
      //score
     float score;
@@ -40,26 +41,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         racket = GameObject.Find("racket");
+        currentBallCount = BallCount;
     }
 
     private void BallHasFallen()
     {
         //loose life
-        BallCount = BallCount - 1;
-        Debug.Log(BallCount);
+        currentBallCount = currentBallCount - 1;
+        Debug.Log(currentBallCount);
 
         //resset multiplier (1 life hits)
         scoreMultiplier = 0;
         BlocksHitReset();
 
         //loose check and respawn
-        if (BallCount > 0)
+        if (currentBallCount > 0)
         {
             GameObject.Instantiate(BallPrefab, new Vector3(racket.transform.position.x, -racket.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
         }
 
         else
         {
+            currentBallCount = BallCount;
             PlayerHasLost();
         }
     }
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
         BlockCount = BlockCount - 1;
         if (BlockCount == 0)
         {
+            currentBallCount = BallCount;
             PlayerHasWon();
         }
     }

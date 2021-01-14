@@ -58,11 +58,13 @@ public class UIMenu : MonoBehaviour
 
     void Won()
     {
+        Time.timeScale = 0f;
         wonUI.SetActive(true);
     }
 
     void Lost()
     {
+        Time.timeScale = 0f;
         lostUI.SetActive(true);
     }
     #endregion
@@ -70,11 +72,13 @@ public class UIMenu : MonoBehaviour
     #region Load Scenes
     public void ReloadScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadNextLevel()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -84,8 +88,6 @@ public class UIMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     #endregion
-
-
 
     public void QuitGame()
     {
