@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
 
     bool PlayerIsReady;
     GameObject racket;
+
     #endregion
 
     #region Ball State
@@ -79,7 +80,7 @@ public class Ball : MonoBehaviour
         //Audio
         if (col.gameObject.CompareTag("Block"))
         {
-
+            
         }
     }
     #endregion

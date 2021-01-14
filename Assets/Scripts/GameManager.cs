@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,9 +21,6 @@ public class GameManager : MonoBehaviour
     int BlocksHit = 1;
 
     int BlockCount = 0;
-
-    //Pause
-    bool GamePaused;
     #endregion
 
     void Awake()
@@ -45,8 +43,9 @@ public class GameManager : MonoBehaviour
         Debug.Log(BallCount);
 
         //resset multiplier (1 life hits)
-        scoreMultiplier = 1;
-        
+        scoreMultiplier = 0;
+        BlocksHitReset();
+
         //loose check and respawn
         if (BallCount > 0)
         {
@@ -63,8 +62,8 @@ public class GameManager : MonoBehaviour
     {
         //Set score
         score = score + 100 * (scoreMultiplier + BlocksHit);
-        Debug.Log(score);
-
+        Debug.Log("Score:" + score);
+        ScoreScript.scoreValue = score;
         //Set multiplier
         BlocksHit = BlocksHit + 1;
         scoreMultiplier = scoreMultiplier + 0.1f;
@@ -92,6 +91,7 @@ public class GameManager : MonoBehaviour
     private void PlayerHasWon()
     {
         Debug.Log("win");
+
     }
 
     //Loose
