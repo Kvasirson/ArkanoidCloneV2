@@ -12,6 +12,12 @@ public class Ball : MonoBehaviour
     public delegate void BallFell();
     public static event BallFell OnBallHasFallen;
     public static event BallFell BallTouchedRacket;
+    public AudioClip bounce;
+    public AudioClip rackettouch;
+    public AudioClip launchball;
+    public AudioClip die;
+
+    AudioSource audiosource;
 
     ParticleSystem BallParticules;
 
@@ -26,6 +32,7 @@ public class Ball : MonoBehaviour
         PlayerIsReady = false;
         racket = GameObject.Find("racket");
         BallParticules = this.gameObject.GetComponentInChildren<ParticleSystem>();
+        audiosource = this.gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -38,6 +45,8 @@ public class Ball : MonoBehaviour
                 GetComponent<Rigidbody2D>().IsAwake();
                 GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
                 BallParticules.Play();
+                audiosource.clip = launchball;
+                audiosource.Play();
             }
 
             if (racket != null)
@@ -75,13 +84,21 @@ public class Ball : MonoBehaviour
 
             // Set Velocity with dir * speed
             GetComponent<Rigidbody2D>().velocity = dir * speed;
+
+            
         }
 
         //Audio
         if (col.gameObject.CompareTag("Block"))
         {
-            
+            audiosource.clip = bounce;
+            audiosource.Play();
         }
+        if (col.gameObject.CompareTag("racket"))
+        {
+            audiosource.clip = rackettouch;
+            audiosource.Play();
+        };
     }
     #endregion
 
@@ -93,6 +110,8 @@ public class Ball : MonoBehaviour
         {
             OnBallHasFallen?.Invoke();
             Destroy(this.gameObject, 0f);
+            audiosource.clip = die;
+            audiosource.Play();
         }
     }
     #endregion
