@@ -21,10 +21,16 @@ public class GameManager : MonoBehaviour
     int BlocksHit = 1;
 
     int BlockCount = 0;
+
+    //events
+    public delegate void UI();
+    public static event UI PlayerWon;
+    public static event UI PlayerLost;
     #endregion
 
     void Awake()
     {
+        //Events
         Ball.OnBallHasFallen += BallHasFallen;
         Ball.BallTouchedRacket += BlocksHitReset;
         Block.UpTHeScore += AddToScore;
@@ -91,13 +97,14 @@ public class GameManager : MonoBehaviour
     private void PlayerHasWon()
     {
         Debug.Log("win");
-
+        PlayerWon?.Invoke();
     }
 
     //Loose
     private void PlayerHasLost()
     {
         Debug.Log("lost");
+        PlayerLost?.Invoke();
     }
 
 }

@@ -2193,6 +2193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 30705223}
+  wonUI: {fileID: 0}
+  lostUI: {fileID: 0}
 --- !u!4 &1045439844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4257678221356254970, guid: 6238f7fbed2b1844391b3264cba61523,
@@ -3591,6 +3593,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinLevelMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612819940078823805, guid: 92c2c8a2813f9504894ad142e058dfc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5612819940078823806, guid: 92c2c8a2813f9504894ad142e058dfc7,
         type: 3}

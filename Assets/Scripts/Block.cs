@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    #region
+    #region Variables
+    //events
     public delegate void ScoreUp();
     public static event ScoreUp UpTHeScore;
     public static event ScoreUp BlockCount;
 
+ 
     [SerializeField] int BlockHealth;
 
     [SerializeField] bool Indestructible;

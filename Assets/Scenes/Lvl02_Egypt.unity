@@ -4272,6 +4272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinLevelMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5612819940078823805, guid: 92c2c8a2813f9504894ad142e058dfc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5612819940078823806, guid: 92c2c8a2813f9504894ad142e058dfc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4500,6 +4505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1266002531}
+  wonUI: {fileID: 0}
+  lostUI: {fileID: 0}
 --- !u!1001 &2061086463
 PrefabInstance:
   m_ObjectHideFlags: 0
