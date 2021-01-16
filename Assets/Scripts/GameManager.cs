@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Variables
-
     //Object
     public GameObject BallPrefab;
 
@@ -24,20 +23,17 @@ public class GameManager : MonoBehaviour
     int BlockCount = 0;
     #endregion
 
-    void Awake()
+    private void Start()
     {
         //Events
         EventsManager.current.OnBallHasFallen += BallHasFallen;
         EventsManager.current.OnBallTouchedRacket += BlocksHitReset;
         EventsManager.current.OnBlockDestroyed += AddToScore;
         EventsManager.current.OnBlockCount += CountBlocks;
-    }
-
-    private void Start()
-    {
         racket = GameObject.Find("racket");
         currentBallCount = BallCount;
         LifeUI.lifeValue = currentBallCount;
+        ScoreScript.scoreValue = score;
     }
 
     private void BallHasFallen()
@@ -60,7 +56,6 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            currentBallCount = BallCount;
             EventsManager.current.PlayerLost();
         }
     }
@@ -77,6 +72,7 @@ public class GameManager : MonoBehaviour
 
         //Win condition
         BlockCount = BlockCount - 1;
+        Debug.Log(BlockCount);
         if (BlockCount == 0)
         {
             currentBallCount = BallCount;

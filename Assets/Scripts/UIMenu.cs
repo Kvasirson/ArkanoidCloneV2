@@ -21,7 +21,7 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject lostUI;
     #endregion
 
-    private void Awake()
+    private void Start()
     {
         EventsManager.current.OnPlayerWon += Won;
         EventsManager.current.OnPlayerLost += Lost;

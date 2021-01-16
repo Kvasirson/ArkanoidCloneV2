@@ -10,13 +10,9 @@ public class AudioManager : MonoBehaviour
     AudioSource audiosource;
     #endregion
 
-    private void Awake()
-    {
-        EventsManager.current.OnBallHasFallen += playDie;
-    }
-
     void Start()
     {
+        EventsManager.current.OnBallHasFallen += playDie;
         audiosource = gameObject.GetComponent<AudioSource>();
     }
 
