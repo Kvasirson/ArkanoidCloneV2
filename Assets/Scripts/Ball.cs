@@ -8,11 +8,6 @@ public class Ball : MonoBehaviour
     // Movement speed
     [SerializeField] float speed = 100f;
 
-    //Event
-    public delegate void BallFell();
-    public static event BallFell OnBallHasFallen;
-    public static event BallFell BallTouchedRacket;
-
     //Particles
     ParticleSystem BallParticules;
 
@@ -80,7 +75,7 @@ public class Ball : MonoBehaviour
         if (col.gameObject.name == "racket")
         {
             //Multiplier reset
-            BallTouchedRacket?.Invoke();
+            EventsManager.current.BallTouchedRacket();
 
             //Audio
             audiosource.clip = rackettouch;
@@ -113,7 +108,7 @@ public class Ball : MonoBehaviour
         //Hit Killzone?
         if (col.gameObject.name == "Ball Killzone")
         {
-            OnBallHasFallen?.Invoke();
+            EventsManager.current.BallHasFallen();
             Destroy(this.gameObject, 0f);
         }
     }

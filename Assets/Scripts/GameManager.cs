@@ -22,20 +22,15 @@ public class GameManager : MonoBehaviour
     int BlocksHit = 1;
 
     int BlockCount = 0;
-
-    //events
-    public delegate void UI();
-    public static event UI PlayerWon;
-    public static event UI PlayerLost;
     #endregion
 
     void Awake()
     {
         //Events
-        Ball.OnBallHasFallen += BallHasFallen;
-        Ball.BallTouchedRacket += BlocksHitReset;
-        Block.UpTHeScore += AddToScore;
-        Block.BlockCount += CountBlocks;
+        EventsManager.current.OnBallHasFallen += BallHasFallen;
+        EventsManager.current.OnBallTouchedRacket += BlocksHitReset;
+        EventsManager.current.OnBlockDestroyed += AddToScore;
+        EventsManager.current.OnBlockCount += CountBlocks;
     }
 
     private void Start()
@@ -66,7 +61,7 @@ public class GameManager : MonoBehaviour
         else
         {
             currentBallCount = BallCount;
-            PlayerHasLost();
+            EventsManager.current.PlayerLost();
         }
     }
 
@@ -85,7 +80,7 @@ public class GameManager : MonoBehaviour
         if (BlockCount == 0)
         {
             currentBallCount = BallCount;
-            PlayerHasWon();
+            EventsManager.current.PlayerWon();
         }
     }
 
@@ -99,19 +94,4 @@ public class GameManager : MonoBehaviour
     {
         BlockCount = BlockCount + 1;
     }
-
-    //Win
-    private void PlayerHasWon()
-    {
-        Debug.Log("win");
-        PlayerWon?.Invoke();
-    }
-
-    //Loose
-    private void PlayerHasLost()
-    {
-        Debug.Log("lost");
-        PlayerLost?.Invoke();
-    }
-
 }

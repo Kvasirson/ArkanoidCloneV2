@@ -7,9 +7,11 @@ public class UIMenu : MonoBehaviour
 {
     #region Variables
     //Pause
-    public static bool GameIsPaused = false;
+    bool GameIsPaused = false;
+    bool CanPauseGame = true;
 
-    [SerializeField] GameObject ui;
+
+    [SerializeField] GameObject gameUI;
     [SerializeField] GameObject pauseMenuUI;
 
     //Won
@@ -21,8 +23,8 @@ public class UIMenu : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.PlayerWon += Won;
-        GameManager.PlayerLost += Lost;
+        EventsManager.current.OnPlayerWon += Won;
+        EventsManager.current.OnPlayerLost += Lost;
     }
 
     // Update is called once per frame
@@ -30,13 +32,16 @@ public class UIMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if (CanPauseGame)
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                if (GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
             }
         }
     }
@@ -48,29 +53,31 @@ public class UIMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        ui.SetActive(true);
+        gameUI.SetActive(true);
     }
     void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        ui.SetActive(false);
+        gameUI.SetActive(false);
     }
     #endregion
 
     void Won()
     {
+        CanPauseGame = false;
         Time.timeScale = 0f;
         wonUI.SetActive(true);
-      ui.SetActive(false);
+        gameUI.SetActive(false);
     }
 
     void Lost()
     {
+        CanPauseGame = false;
         Time.timeScale = 0f;
         lostUI.SetActive(true);
-         ui.SetActive(false);
+         gameUI.SetActive(false);
     }
     #endregion
 

@@ -5,12 +5,6 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     #region Variables
-    //events
-    public delegate void ScoreUp();
-    public static event ScoreUp UpTHeScore;
-    public static event ScoreUp BlockCount;
-
- 
     [SerializeField] int BlockHealth;
 
     [SerializeField] bool Indestructible;
@@ -20,7 +14,7 @@ public class Block : MonoBehaviour
     {
         if (Indestructible == false)
         {
-            BlockCount?.Invoke();
+            EventsManager.current.BlockCount();
         }
     }
 
@@ -36,7 +30,7 @@ public class Block : MonoBehaviour
 
             else
             {
-                UpTHeScore?.Invoke();
+                EventsManager.current.BlockDestroyed();
                 Destroy(gameObject);
             }
         }

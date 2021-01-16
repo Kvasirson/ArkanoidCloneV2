@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-
+        EventsManager.current.OnBallHasFallen += playDie;
     }
 
     void Start()
