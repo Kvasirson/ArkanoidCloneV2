@@ -42,12 +42,15 @@ public class GameManager : MonoBehaviour
     {
         racket = GameObject.Find("racket");
         currentBallCount = BallCount;
+        LifeUI.lifeValue = currentBallCount;
     }
 
     private void BallHasFallen()
     {
         //loose life
+        
         currentBallCount = currentBallCount - 1;
+        LifeUI.lifeValue = currentBallCount;
         Debug.Log(currentBallCount);
 
         //resset multiplier (1 life hits)

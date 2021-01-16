@@ -9,6 +9,7 @@ public class UIMenu : MonoBehaviour
     //Pause
     public static bool GameIsPaused = false;
 
+    [SerializeField] GameObject ui;
     [SerializeField] GameObject pauseMenuUI;
 
     //Won
@@ -47,12 +48,14 @@ public class UIMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        ui.SetActive(true);
     }
     void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        ui.SetActive(false);
     }
     #endregion
 
@@ -60,12 +63,14 @@ public class UIMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         wonUI.SetActive(true);
+      ui.SetActive(false);
     }
 
     void Lost()
     {
         Time.timeScale = 0f;
         lostUI.SetActive(true);
+         ui.SetActive(false);
     }
     #endregion
 
