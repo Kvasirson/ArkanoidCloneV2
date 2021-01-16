@@ -1414,6 +1414,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1429,6 +1430,102 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!82 &519420030
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f320473bb2cb1e24287cc862de18a872, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.08
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2583,6 +2680,8 @@ MonoBehaviour:
   BallPrefab: {fileID: 5203923827830443980, guid: 6dc86e0824809154585da84c26d0b31a,
     type: 3}
   BallCount: 3
+  score: 0
+  baseScore: 0
 --- !u!4 &1172831224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7626254783699170239, guid: c0a70ad1f84a5004c95c18da6025ffd3,
@@ -2766,6 +2865,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2051083928}
+  wonUI: {fileID: 0}
+  lostUI: {fileID: 0}
 --- !u!114 &1188267087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,6 +5263,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinLevelMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5612819940078823805, guid: 92c2c8a2813f9504894ad142e058dfc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5612819940078823806, guid: 92c2c8a2813f9504894ad142e058dfc7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5417,6 +5523,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203923827830443971, guid: 6dc86e0824809154585da84c26d0b31a,
+        type: 3}
+      propertyPath: bounce
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203923827830443971, guid: 6dc86e0824809154585da84c26d0b31a,
+        type: 3}
+      propertyPath: rackettouch
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203923827830443971, guid: 6dc86e0824809154585da84c26d0b31a,
+        type: 3}
+      propertyPath: launchball
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203923827830443971, guid: 6dc86e0824809154585da84c26d0b31a,
+        type: 3}
+      propertyPath: die
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5203923827830443980, guid: 6dc86e0824809154585da84c26d0b31a,
         type: 3}
