@@ -15,6 +15,6 @@ public class LifeUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        life.text = "Vie: " + lifeValue;
+        life.text = "BALLS : " + lifeValue;
     }
 }

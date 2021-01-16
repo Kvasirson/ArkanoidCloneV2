@@ -85,7 +85,7 @@ public class UIMenu : MonoBehaviour
     public void ReloadScene()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Lvl01_Basic");
     }
 
     public void LoadNextLevel()
