@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Variables
-
     //Object
     public GameObject BallPrefab;
 
@@ -14,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     //Counts
     [SerializeField] int BallCount;
+    int currentBallCount;
 
      //score
     float score;
@@ -23,38 +23,40 @@ public class GameManager : MonoBehaviour
     int BlockCount = 0;
     #endregion
 
-    void Awake()
-    {
-        Ball.OnBallHasFallen += BallHasFallen;
-        Ball.BallTouchedRacket += BlocksHitReset;
-        Block.UpTHeScore += AddToScore;
-        Block.BlockCount += CountBlocks;
-    }
-
     private void Start()
     {
+        //Events
+        EventsManager.current.OnBallHasFallen += BallHasFallen;
+        EventsManager.current.OnBallTouchedRacket += BlocksHitReset;
+        EventsManager.current.OnBlockDestroyed += AddToScore;
+        EventsManager.current.OnBlockCount += CountBlocks;
         racket = GameObject.Find("racket");
+        currentBallCount = BallCount;
+        LifeUI.lifeValue = currentBallCount;
+        ScoreScript.scoreValue = score;
     }
 
     private void BallHasFallen()
     {
         //loose life
-        BallCount = BallCount - 1;
-        Debug.Log(BallCount);
+        
+        currentBallCount = currentBallCount - 1;
+        LifeUI.lifeValue = currentBallCount;
+        Debug.Log(currentBallCount);
 
         //resset multiplier (1 life hits)
         scoreMultiplier = 0;
         BlocksHitReset();
 
         //loose check and respawn
-        if (BallCount > 0)
+        if (currentBallCount > 0)
         {
             GameObject.Instantiate(BallPrefab, new Vector3(racket.transform.position.x, -racket.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
         }
 
         else
         {
-            PlayerHasLost();
+            EventsManager.current.PlayerLost();
         }
     }
 
@@ -70,9 +72,11 @@ public class GameManager : MonoBehaviour
 
         //Win condition
         BlockCount = BlockCount - 1;
+        Debug.Log(BlockCount);
         if (BlockCount == 0)
         {
-            PlayerHasWon();
+            currentBallCount = BallCount;
+            EventsManager.current.PlayerWon();
         }
     }
 
@@ -85,18 +89,5 @@ public class GameManager : MonoBehaviour
     private void CountBlocks()
     {
         BlockCount = BlockCount + 1;
-    }
-
-    //Win
-    private void PlayerHasWon()
-    {
-        Debug.Log("win");
-
-    }
-
-    //Loose
-    private void PlayerHasLost()
-    {
-        Debug.Log("lost");
     }
 }

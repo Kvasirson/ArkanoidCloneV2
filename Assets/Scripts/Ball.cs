@@ -8,12 +8,15 @@ public class Ball : MonoBehaviour
     // Movement speed
     [SerializeField] float speed = 100f;
 
-    //Event
-    public delegate void BallFell();
-    public static event BallFell OnBallHasFallen;
-    public static event BallFell BallTouchedRacket;
-
+    //Particles
     ParticleSystem BallParticules;
+
+    //Audio
+    [SerializeField] AudioClip launchball;
+    [SerializeField] AudioClip bounce;
+    [SerializeField] AudioClip rackettouch;
+
+    AudioSource audiosource;
 
     bool PlayerIsReady;
     GameObject racket;
@@ -25,7 +28,10 @@ public class Ball : MonoBehaviour
     {
         PlayerIsReady = false;
         racket = GameObject.Find("racket");
-        BallParticules = this.gameObject.GetComponentInChildren<ParticleSystem>();
+        //Get particle system
+        BallParticules = gameObject.GetComponentInChildren<ParticleSystem>();
+        //Get audioSource
+        audiosource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -37,7 +43,13 @@ public class Ball : MonoBehaviour
                 PlayerIsReady = true;
                 GetComponent<Rigidbody2D>().IsAwake();
                 GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+
+                //Particles
                 BallParticules.Play();
+
+                //Audio
+                audiosource.clip = launchball;
+                audiosource.Play();
             }
 
             if (racket != null)
@@ -63,7 +75,11 @@ public class Ball : MonoBehaviour
         if (col.gameObject.name == "racket")
         {
             //Multiplier reset
-            BallTouchedRacket?.Invoke();
+            EventsManager.current.BallTouchedRacket();
+
+            //Audio
+            audiosource.clip = rackettouch;
+            audiosource.Play();
 
             // Calculate hit Factor
             float x = hitFactor(transform.position,
@@ -74,13 +90,14 @@ public class Ball : MonoBehaviour
             Vector2 dir = new Vector2(x, 1).normalized;
 
             // Set Velocity with dir * speed
-            GetComponent<Rigidbody2D>().velocity = dir * speed;
+            GetComponent<Rigidbody2D>().velocity = dir * speed;           
         }
 
-        //Audio
+        // Hit Blocks ?
         if (col.gameObject.CompareTag("Block"))
         {
-            
+            audiosource.clip = bounce;
+            audiosource.Play();
         }
     }
     #endregion
@@ -91,7 +108,7 @@ public class Ball : MonoBehaviour
         //Hit Killzone?
         if (col.gameObject.name == "Ball Killzone")
         {
-            OnBallHasFallen?.Invoke();
+            EventsManager.current.BallHasFallen();
             Destroy(this.gameObject, 0f);
         }
     }

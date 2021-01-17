@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreScript : MonoBehaviour
+public class LifeUI : MonoBehaviour
 {
-    public static float scoreValue = 0;
-    Text score;
+    public static float lifeValue = 0;
+    Text life;
     void Start()
     {
-        score = GetComponent<Text>();
+        life = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        score.text = "SCORE : " + scoreValue;
-
+        life.text = "BALLS : " + lifeValue;
     }
 }
