@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cffbcf291d0a5449935b3031f335b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 150
   launchball: {fileID: 8300000, guid: af4cf80b74825d44da9162a9ec5eaf41, type: 3}
   bounce: {fileID: 8300000, guid: 64d3c99c17d36d34ca3f9d9c8e12cd35, type: 3}
   rackettouch: {fileID: 8300000, guid: bdab9fe7350212c4ba1d65538ecdeea8, type: 3}
